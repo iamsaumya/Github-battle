@@ -44,7 +44,7 @@ function ReposGrid({repos}){
               avatar={avatar_url}
               href={html_url}
               name={login}
-              />
+              >
               <ul className='card-list'>
                 <li>
                 <Tooltip text="Github username">
@@ -71,6 +71,7 @@ function ReposGrid({repos}){
                   {open_issues.toLocaleString()} open
                 </li>
               </ul>
+              </Card>
             </li>
           )
         })}

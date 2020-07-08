@@ -4,6 +4,8 @@ import {fetchPopularRepos} from '../utils/api'
 import {FaUser,FaStar,FaCodeBranch,FaExclamationTriangle} from 'react-icons/fa'
 import {GoRepo} from 'react-icons/go'
 import Card from './Card'
+import Loading from './Loading'
+import Tooltip from './Tooltip'
 
 function LanguagesNav ({selected,onUpdateLanguage}){
     const languages = ['All','JavaScript','Ruby','Java','CSS','Python']
@@ -45,10 +47,12 @@ function ReposGrid({repos}){
               />
               <ul className='card-list'>
                 <li>
-                  <FaUser color='rgb(255, 191, 116)' size={22} />
-                  <a href={`https://github.com/${login}`}>
-                    {login}
-                  </a>
+                <Tooltip text="Github username">
+                    <FaUser color='rgb(255, 191, 116)' size={22} />
+                    <a href={`https://github.com/${login}`}>
+                      {login}
+                    </a>
+                  </Tooltip>
                 </li>
                 <li>
                   <GoRepo color='red' size={22}/>
@@ -132,7 +136,7 @@ export default class Popular extends React.Component{
             selected = {selectedLanguage}
             onUpdateLanguage = {this.updateLanguage}
                 />
-            {this.isLoading() && <p>Loading</p>}
+            {this.isLoading() && <Loading text='Fetching Repos'/>}
             {error && <p className='error center-text'>{error}</p>}
             {repos[selectedLanguage] && <ReposGrid repos={repos[selectedLanguage]}/>}
             </React.Fragment>

@@ -48,16 +48,12 @@ ProfileList.propTypes = {
 }
 
 export default class Results extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      winner: null,
-      loser: null,
-      error: null,
-      loading: true,
-    };
-  }
+  state = {
+    winner: null,
+    loser: null,
+    error: null,
+    loading: true,
+  };
 
   componentDidMount() {
     
